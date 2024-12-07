@@ -1,0 +1,22 @@
+{
+  "name": "lumber",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "workspaces": {
+    "packages": [
+      "api",
+      "web",
+      "common"
+    ]
+  },
+  "scripts": {
+    "build": "yarn workspace @lumber/common build && yarn workspace @lumber/api build && yarn workspace @lumber/web build"
+  }
+}

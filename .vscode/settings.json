@@ -1,0 +1,23 @@
+{
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "root",
+        },
+        {
+          "name": "api",
+          "commands": ["cd api"]
+        },
+        {
+          "name": "web",
+          "commands": ["cd web"]
+        },
+        {
+          "name": "common",
+          "commands": ["cd common"]
+        }
+      ]
+    }
+  ]
+}
