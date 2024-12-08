@@ -1,3 +1,1 @@
-export type Hello = 'hello'
-
-export const HELLO: Hello = 'hello'
+export * from './models/UserModel'

@@ -29,6 +29,10 @@
     "build": "yarn workspace @lumber/common build && yarn workspace @lumber/api build && yarn workspace @lumber/web build",
     "start": "npm-run-all -p build start:*",
     "start:api": "yarn workspace @lumber/api start",
-    "start:web": "yarn workspace @lumber/web start"
+    "start:web": "yarn workspace @lumber/web start",
+    "test": "yarn workspace @lumber/api test"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
   }
 }
