@@ -2,7 +2,7 @@
 
 My preferred stack is Typescript, with a Node.js based back-end and a React based front-end.
 
-Typically, I have a repository for each one. But I find that there aren't a lot of benefits to doing so especially in small teams of < 20 people.
+Typically, I have a repository for each one. But I find that there aren't a lot of benefits especially in new projects or small engineering teams of < 20 people.
 
 Challenges:
 
@@ -14,6 +14,38 @@ Challenges:
 However, this does not mean that I want to move to a full-stack framework. There are clear and tangible benefits to having separated API and web codebases and architectures. Thus, this project was born.
 
 This repository is meant to be a boilerplate starting point for any full-stack application project I want to pursue.
+
+# Folder structure
+
+```
+lumber/
+├── package.json
+├── eslint.config.js
+├── tsconfig.json
+├── ... other global configuration files
+├── api/
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── src/
+│       └── index.ts
+│       └── ... rest of the API application
+├── common/
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── src/
+│       └── index.ts
+│       └── ... rest of the common shared code
+├── web/
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── tsconfig.app.json
+│   ├── tsconfig.node.json
+│   ├── vite.config.ts
+│   ├── index.html
+│   └── src/
+│       └── index.tsx
+│       └── ... rest of the web application
+```
 
 # How it is set up
 
@@ -38,6 +70,13 @@ It was challenging to set up all the right configurations for each of these proj
   - For projects that need to import code from other projects, a "references": [] entry that points to those imports.
 
 All dependencies are up to date as of Dec 2024.
+
+# How to run
+
+1. Git clone
+2. At the root level, run `yarn install`
+3. `yarn build` to build, or
+4. `yarn start` to start the API and web server concurrently with `npm-run-all` (the `concurrently` package didn't play well with modules)
 
 # What's next
 
