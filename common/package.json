@@ -3,16 +3,36 @@
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",
-  "main": "dist/index.js",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "default": "./src/index.ts"
+    "./http": {
+      "import": "./dist/http.js",
+      "require": "./dist/http.js",
+      "default": "./src/http.ts"
+    },
+    "./supertest": {
+      "import": "./dist/supertest.js",
+      "require": "./dist/supertest.js",
+      "default": "./src/supertest.ts"
+    },
+    "./models": {
+      "import": "./dist/models.js",
+      "require": "./dist/models.js",
+      "default": "./src/models.ts"
     }
   },
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/supertest": "^6.0.2"
+  },
+  "peerDependencies": {
+    "axios": "^1.7.9",
+    "supertest": "^7.0.0"
   }
 }

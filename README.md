@@ -18,33 +18,77 @@ This repository is meant to be a boilerplate starting point for any full-stack a
 # Folder structure
 
 ```
-lumber/
+api/
+├── src/
+│   ├── database/
+│   │   ├── DatabaseModels.ts
+│   │   └── index.ts
+│   ├── migrations/
+│   │   └── 001_init.ts
+│   ├── repositories/
+│   │   └── UserRepository.ts
+│   ├── services/
+│   │   └── UserService.ts
+│   ├── app.ts
+│   └── index.ts
+├── tests/
+│   ├── Globals.ts
+│   ├── ping.test.ts
+│   ├── setup.ts
+│   └── user.test.ts
 ├── package.json
-├── eslint.config.js
 ├── tsconfig.json
-├── ... other global configuration files
-├── api/
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── src/
-│       └── index.ts
-│       └── ... rest of the API application
-├── common/
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── src/
-│       └── index.ts
-│       └── ... rest of the common shared code
-├── web/
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── tsconfig.app.json
-│   ├── tsconfig.node.json
-│   ├── vite.config.ts
-│   ├── index.html
-│   └── src/
-│       └── index.tsx
-│       └── ... rest of the web application
+└── vitest.config.ts
+common/
+├── src/
+│   ├── clients/
+│   │   ├── BaseClient.ts
+│   │   ├── HttpClient.ts
+│   │   └── SupertestClient.ts
+│   ├── models/
+│   │   ├── PingModel.ts
+│   │   └── UserModel.ts
+│   ├── responses/
+│   │   └── index.ts
+│   ├── http.ts
+│   ├── models.ts
+│   └── supertest.ts
+├── package.json
+└── tsconfig.json
+web/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── components/
+│   │   └── ui/
+│   │       ├── alert.tsx
+│   │       └── button.tsx
+│   ├── lib/
+│   │   └── utils.ts
+│   ├── API.ts
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── vite-env.d.ts
+│   └── components.json
+├── .gitignore
+├── index.html
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+.gitignore
+.prettierrc
+eslint.config.js
+package.json
+README.md
+tsconfig.json
 ```
 
 # How it is set up
@@ -71,12 +115,26 @@ It was challenging to set up all the right configurations for each of these proj
 
 All dependencies are up to date as of Dec 2024.
 
+### Tools of choice
+
+- Postgres: Versatile SQL database
+- Express: Can't go wrong with, easy to learn, and tons of tutorials online for newcomers.
+- Kysely: The spiritual successor to Knex, which was my query builder of choice. ORMs are quite heavy-handed and often don't work well once you need more custom SQL functionality, so query builders are the way to go.
+- Vitest: The upgrade to Jest
+- Supertest: Used for testing the Express API as an API consumer
+- Zod: Extremely useful validation library that works well with Typescript - I have caught many errors and saved tons of time with this library
+- React: The most popular front-end framework in the world
+- Tailwind
+- Shadcn/ui
+
 # How to run
 
 1. Git clone
 2. At the root level, run `yarn install`
-3. `yarn build` to build, or
-4. `yarn start` to start the API and web server concurrently with `npm-run-all` (the `concurrently` package didn't play well with modules)
+3. Set up a local Postgres database with user `postgres`, no password needed, a database called anything - I'll refer to as {database} here, and another database called {database_test} which the integration tests will run against
+4. Update the environment variables in [api/src/database/index.ts](api/src/database/index.ts) with your database configuration, namely the test `DATABASE_NAME` - when running database integration tests, it expects a completely separate database to exist from your actual application database instance
+5. `yarn build` to build, or
+6. `yarn start` to start the API and web server concurrently with `npm-run-all` (the `concurrently` package didn't play well with modules)
 
 # What's next
 

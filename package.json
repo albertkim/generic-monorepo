@@ -30,9 +30,10 @@
     "start": "npm-run-all -p build start:*",
     "start:api": "yarn workspace @lumber/api start",
     "start:web": "yarn workspace @lumber/web start",
-    "test": "yarn workspace @lumber/api test"
+    "test": "yarn workspace @lumber/api test",
+    "repomix": "repomix"
   },
   "dependencies": {
-    "zod": "^3.23.8"
+    "repomix": "^0.2.5"
   }
 }

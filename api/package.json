@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "tsx src/index.ts",
-    "test": "vitest run --coverage"
+    "start": "tsx --env-file=.env src/index.ts",
+    "test": "NODE_ENV=test vitest run --coverage"
   },
   "dependencies": {
     "@lumber/common": "*",
@@ -15,12 +15,16 @@
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.0",
-    "@types/knex": "^0.16.1",
+    "@types/http-errors": "^2.0.4",
+    "@types/pg": "^8.11.10",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "knex": "^3.1.0"
+    "http-errors": "^2.0.0",
+    "kysely": "^0.27.5",
+    "pg": "^8.13.1",
+    "supertest": "^7.0.0"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "2.1.8",
